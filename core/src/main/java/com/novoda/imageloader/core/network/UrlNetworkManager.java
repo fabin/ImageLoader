@@ -15,6 +15,8 @@
  */
 package com.novoda.imageloader.core.network;
 
+import android.util.Log;
+
 import com.novoda.imageloader.core.LoaderSettings;
 import com.novoda.imageloader.core.exception.ImageNotFoundException;
 import com.novoda.imageloader.core.file.util.FileUtil;
@@ -30,6 +32,8 @@ import java.util.Map;
 public class UrlNetworkManager implements NetworkManager {
 
     private static final int TEMP_REDIRECT = 307;
+
+	private static final String	TAG	= UrlNetworkManager.class.getName();
 
     private FileUtil fileUtil;
     private LoaderSettings settings;
@@ -67,8 +71,7 @@ public class UrlNetworkManager implements NetworkManager {
         } catch (FileNotFoundException fnfe) {
             throw new ImageNotFoundException();
         } catch (Throwable ex) {
-            ex.printStackTrace();
-            // TODO
+           Log.e(TAG, ex.getMessage(), ex);
         } finally {
             if (conn != null && settings.getDisconnectOnEveryCall()) {
                 conn.disconnect();

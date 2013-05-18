@@ -71,6 +71,7 @@ public class LoaderSettings {
     private boolean useAsyncTasks;
     private boolean allowUpsampling;
     private boolean alwaysUseOriginalSize;
+	private boolean	cleanOnSetup = true;
 
     /**
      * Constructor with all settings set to default values
@@ -234,8 +235,13 @@ public class LoaderSettings {
     }
 
     public boolean isCleanOnSetup() {
-        return true;
+        return cleanOnSetup ;
     }
+    
+    public void setCleanOnSetup(boolean cleanOnSetup)
+	{
+		this.cleanOnSetup = cleanOnSetup;
+	}
 
     /**
      * Flag to enable upsampling for small images.
