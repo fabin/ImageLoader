@@ -36,4 +36,7 @@ public class NoCache implements CacheManager {
     public void clean() {
     }
 
+    @Override
+	public void clean(String url){
+	}
 }

@@ -53,7 +53,10 @@ public class SimpleLoader implements Loader {
 
     private void onImageLoaded(ImageView imageView) {
         if (onImageLoadedListener != null) {
-            onImageLoadedListener.get().onImageLoaded(imageView);
+        	OnImageLoadedListener listener = onImageLoadedListener.get();
+            if(listener!=null){
+            	listener.onImageLoaded(imageView);
+            }
         }
     }
 
@@ -103,8 +106,12 @@ public class SimpleLoader implements Loader {
                     return b;
                 }
             }
-            loaderSettings.getNetworkManager().retrieveImage(url, f);
-            return loaderSettings.getBitmapUtil().decodeFileAndScale(f, width, height, loaderSettings.isAllowUpsampling());
+            else{
+            	// file exists, will  not load again.
+            	loaderSettings.getNetworkManager().retrieveImage(url, f);
+            	return loaderSettings.getBitmapUtil().decodeFileAndScale(f, width, height, loaderSettings.isAllowUpsampling());
+            }
+            	
         }
         return null;
     }

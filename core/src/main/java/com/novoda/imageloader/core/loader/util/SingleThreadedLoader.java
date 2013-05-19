@@ -120,7 +120,8 @@ public abstract class SingleThreadedLoader {
                 Bitmap bmp = loadMissingBitmap(iw);
                 if (bmp == null) {
                     clean(iw);
-                    onBitmapLoaded(iw, bmp);
+                    //why call this??
+//                    onBitmapLoaded(iw, bmp);
                     return;
                 }
                 onBitmapLoaded(iw, bmp);

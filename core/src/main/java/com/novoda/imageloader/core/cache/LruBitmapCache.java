@@ -18,6 +18,7 @@ package com.novoda.imageloader.core.cache;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.novoda.imageloader.core.cache.util.LruCache;
 
@@ -31,6 +32,7 @@ public class LruBitmapCache implements CacheManager {
 
     public static final int DEFAULT_MEMORY_CACHE_PERCENTAGE = 25;
     private static final int DEFAULT_MEMORY_CAPACITY_FOR_DEVICES_OLDER_THAN_API_LEVEL_4 = 12;
+	private static final String	TAG	= LruBitmapCache.class.getName();
     private LruCache<String, Bitmap> cache;
     private int capacity;
 
@@ -107,4 +109,10 @@ public class LruBitmapCache implements CacheManager {
 
         return capacity;
     }
+
+	@Override
+	public void clean(String url)
+	{
+		cache.remove(url);
+	}
 }
