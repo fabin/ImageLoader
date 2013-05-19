@@ -32,7 +32,7 @@ import java.io.FileOutputStream;
  */
 public class BasicFileManager implements FileManager {
 
-    private LoaderSettings loaderSettings;
+    protected LoaderSettings loaderSettings;
 
     public BasicFileManager(LoaderSettings settings) {
         this.loaderSettings = settings;
@@ -91,7 +91,7 @@ public class BasicFileManager implements FileManager {
         return new File(loaderSettings.getCacheDir(), filename);
     }
 
-    private String processUrl(String url) {
+    protected String processUrl(String url) {
         if (loaderSettings.isQueryIncludedInHash()) {
             return url;
         }
