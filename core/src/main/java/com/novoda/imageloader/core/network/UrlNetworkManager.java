@@ -50,6 +50,7 @@ public class UrlNetworkManager implements NetworkManager {
 
     @Override
     public void retrieveImage(String url, File f) {
+		Log.d(TAG, "retrieveImage(...) url = " + url + "; file = " + f.getAbsolutePath());
         InputStream is = null;
         OutputStream os = null;
         HttpURLConnection conn = null;

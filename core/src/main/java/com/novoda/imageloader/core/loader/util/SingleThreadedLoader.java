@@ -126,6 +126,7 @@ public abstract class SingleThreadedLoader {
                 }
                 onBitmapLoaded(iw, bmp);
             } catch (ImageNotFoundException inf) {
+            	Log.e(TAG, inf.getMessage(), inf);
                 notFoundImages.add(iw.getUrl());
             } catch (Throwable e) {
                 Log.e(TAG, "Throwable : " + e.getMessage(), e);
